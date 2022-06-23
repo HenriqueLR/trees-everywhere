@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block extra_scripts %}
+	<style type="text/css">
+		.bg-dark{
+			background-color: rgb(95, 226, 123)!important;	
+		}
+		.fa-custom{
+			font-size:40px;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<h1 class="h2">My Plant Trees</h1>
+		<div class="btn-toolbar mb-2 mb-md-0">
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle border border-dark" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+					<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+					{% if fp == 'my' %}my plants{% else %}all accounts{% endif %}
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				  <li><a class="dropdown-item" href="?fp=all">all accounts</a></li>		
+				  <li><hr class="dropdown-divider"></li>
+				  <li><a class="dropdown-item" href="?fp=my">my plants</a></li>					  		  
+				</ul>
+			  </div>			
+		<div class="btn-group me-2">
+		   <a href="{% url 'trees:list_trees' %}" class="btn btn-success">
+			<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+				plant tree 
+	   	    </a>
+			 	
+		</div>
+		</div>
+	</div>
+	{% include "messages.html" %}	
+	<div class="row row-cols-3 row-cols-lg-12 align-items-stretch g-4 py-5">
+		{% for tree in trees %}
+			<div class="col">
+				<div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg">
+				<div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+					<h2 class="mb-4 display-6 lh-1 fw-bold">{{ tree.name }}</h2>
+					<ul class="d-flex list-unstyled mt-auto">
+					<li class="me-auto">
+						<svg class="bi me-2 fa-custom" width="1em" height="1em"><use xlink:href="#tree"/></svg> <br></byr><small>{{ tree.count_plant }} plants</small>
+					</li>
+					<li class="d-flex align-items-center">
+						<a href="{% url 'trees:detail_plants' tree.pk  fp %}" class="btn btn-success">
+							<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#table"/></svg>
+							view
+						</a>
+						<a href="{% url 'trees:plant_tree' tree.pk %}" class="btn btn-light">
+							<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+							plant
+						</a>
+					</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+		{% endfor %}	
+	</div>
+{% endblock %}

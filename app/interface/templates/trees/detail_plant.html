@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block extra_scripts %}
+	<style type="text/css">
+		.bg-dark{
+			background-color: rgb(95, 226, 123)!important;	
+		}
+		.fa-custom{
+			font-size:40px;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<h1 class="h2">{{ tree.name }}</h1>
+		<div class="btn-group me-2">
+		   <a href="{% url 'trees:list_plants' %}?fp={{ fp }}" class="btn btn-success">
+			<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+				my plants
+	   	    </a>
+		</div>
+	</div>
+	<div class="row row-cols-3 row-cols-lg-12 align-items-stretch g-4 py-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tree Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Email</th>
+                <th scope="col">Age tree</th>
+                <th scope="col">Lat</th>
+                <th scope="col">Long</th>                                
+              </tr>
+            </thead>
+            <tbody>
+                {% for plant in plants %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ plant.trees.name }}</td>
+                    <td>{{ plant.user.profile_user }}</td>
+                    <td>{{ plant.user }}</td>
+                    <td>{{ plant.age }}</td>
+                    <td>{{ plant.lt }}</td>
+                    <td>{{ plant.lg }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>        
+	</div>
+{% endblock %}

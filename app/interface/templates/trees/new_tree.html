@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block extra_scripts %}
+	<style type="text/css">
+		.bg-dark{
+			background-color: rgb(95, 226, 123)!important;	
+		} 
+        .custom-row {
+            margin-top:23px;
+        }        
+	</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">   
+    <form class="row g-3" action="." method="post">
+        <h1>Plant Tree</h1>
+        {% include "messages.html" %}
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-3">
+            <label for="id_name" class="visually-hidden">Name Tree</label>
+            <input maxlength="50" required="" name="name" type="text" class="form-control" id="id_name" placeholder="name tree">
+        </div>        
+        <div class="col-md-3">
+            <label for="id_alias" class="visually-hidden">Alias Tree</label>
+            <input name="alias" maxlength="50" required="" type="text" class="form-control" id="id_alias" placeholder="name alias">
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-success">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+                create tree
+            </button>
+        </div>  
+        </div>
+
+        <div class="row custom-row">
+            <div class="col-md-6">
+                <a class="btn btn-success" href="{% url 'trees:list_trees' %}">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+                    trees
+                </a>
+                <a class="btn btn-default border border-dark" href="{% url 'trees:list_plants' %}">
+                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#table"/></svg>
+                    my plants
+                </a>                    
+            </div>
+        </div>
+        
+    </form>
+</div>
+{% endblock %}
+
+

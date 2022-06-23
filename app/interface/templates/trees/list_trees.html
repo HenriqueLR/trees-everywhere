@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block extra_scripts %}
+	<style type="text/css">
+		.bg-dark{
+			background-color: rgb(95, 226, 123)!important;	
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<h1 class="h2">Select a tree to plant </h1>
+		<div class="btn-toolbar mb-2 mb-md-0">
+			<div class="btn-group me-2">
+				<a href="{% url 'trees:list_plants' %}" class="btn btn-default border border-dark">
+					<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#table"/></svg>
+					my plants
+				</a>			
+				<a href="{% url 'trees:add_tree' %}" class="btn btn-success">
+					<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+						add tree 
+					   </a>						
+			</div>
+		</div>
+	</div>
+	{% include "messages.html" %}	
+	<div class="row row-cols-3 row-cols-lg-12 align-items-stretch g-4 py-5">
+		{% for tree in trees %}
+			<div class="col">
+				<div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg">
+				<div class="d-flex flex-column h-100 p-5 text-white text-shadow-1">
+					<h2 class="mb-4 display-6 lh-1 fw-bold">
+						<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#tree"/></svg>
+						{{ tree.name }}
+					</h2>
+
+					<a href="{% url 'trees:plant_tree' tree.pk %}" class="btn btn-light">
+						<svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+						plant
+					</a>				
+				</div>
+				</div>
+			</div>	
+		{% endfor %}	
+	</div>
+{% endblock %}
