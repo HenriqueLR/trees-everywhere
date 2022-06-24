@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath app conf.heroku:application --log-file -
