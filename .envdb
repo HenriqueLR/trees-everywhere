@@ -1,0 +1,4 @@
+POSTGRES_USER=treeseverywhere
+POSTGRES_PASSWORD=treeseverywhere
+POSTGRES_DB=treeseverywhere
+PG_PASSWORD=postgres

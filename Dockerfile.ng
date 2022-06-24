@@ -1,0 +1,9 @@
+FROM henriquelr89/ubuntu-nginx:1.18
+MAINTAINER henrique.lr89@gmail.com
+
+RUN mkdir -p /deploy/apps/trees-everywhere/env/nginx/
+ADD /env/nginx /deploy/apps/trees-everywhere/env/nginx/
+WORKDIR ./deploy/apps/trees-everywhere/env/nginx/
+RUN cp ./default /etc/nginx/sites-enabled/default
+
+ENTRYPOINT ["sh", "/deploy/apps/trees-everywhere/env/nginx/entrypoint.sh"]

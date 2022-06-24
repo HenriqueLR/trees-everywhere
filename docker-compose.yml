@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  app:
+    image: trees-everywhere:1.0
+    container_name: trees-everywhere
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    working_dir: /deploy/apps/trees-everywhere/
+    command: sh -c '''python app/manage.py makemigrations --settings=conf.settings_production && 
+                      python app/manage.py migrate --settings=conf.settings_production  && 
+                      python app/manage.py collectstatic --noinput &&
+                      env/docker/services.sh supervisord_run'''
+    volumes:
+      - static_volume:/deploy/apps/trees-everywhere/app/interface/static_files
+      - .:/deploy/apps/trees-everywhere
+      - ./env/supervisord:/etc/supervisord
+    ports:
+      - 7007
+    env_file:
+      - ./.env
+    depends_on:
+      - db      
+  db:
+    image: postgresql-trees:12.0
+    container_name: postgresql-trees
+    build:
+      context: .
+      dockerfile: Dockerfile.bd
+    volumes:
+      - pg-data-treeseverywhere:/var/lib/postgresql/12/main
+      - ./env/postgresql:/deploy/apps/trees-everywhere/env/postgresql      
+    ports:
+      - 5544:5432
+    env_file:
+      - ./.envdb
+  wp:
+    image: nginx-trees:1.0
+    container_name: nginx-trees
+    build: 
+      context: .
+      dockerfile: Dockerfile.ng
+    volumes:
+      - static_volume:/deploy/apps/trees-everywhere/app/interface/static_files
+      - ./env/nginx:/deploy/apps/trees-everywhere/env/nginx
+    ports:
+      - 8002:80
+    depends_on:
+      - app            
+volumes:
+  static_volume:
+  pg-data-treeseverywhere:
