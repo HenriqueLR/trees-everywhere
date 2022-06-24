@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app conf.heroku:application --log-file -
+web: gunicorn --pythonpath app conf.wsgi:application --log-file -
