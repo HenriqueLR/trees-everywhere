@@ -1,6 +1,8 @@
 #makefile
 SHELL := /bin/bash
 
+install: dependences static migrate run
+
 dependences:
 	pip install -r requirements.txt ;\
 

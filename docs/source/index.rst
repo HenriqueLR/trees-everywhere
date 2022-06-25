@@ -1,17 +1,12 @@
-.. trees everywhere documentation master file, created by
+==========================
+Guide Start
+==========================
 
-Welcome to trees-everywhere's documentation!
-===========================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. include:: ../../READNE.md
 
 
+==========================
+Version Game
+==========================
+.. include:: ../../VERSION
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
