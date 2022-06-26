@@ -101,7 +101,7 @@ volunteers around the world.
 
   Access the application demo https://trees-everywhere.herokuapp.com/
 
-    crendentials
+    this test users are linked into equal accounts.
     
     email: test@test.com
     password: teste123456
