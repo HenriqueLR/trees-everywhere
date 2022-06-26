@@ -6,7 +6,7 @@ Guide Start
 
 
 ==========================
-Version Game
+Version
 ==========================
 .. include:: ../../VERSION
 

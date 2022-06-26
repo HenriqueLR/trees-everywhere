@@ -15,4 +15,5 @@ class TreeApiView(APIView):
         serializer = TreeSerializer(trees_plant, many=True)
         return Response(serializer.data)
 
+
 list_tree_api = TreeApiView.as_view()

@@ -16,7 +16,12 @@ exclude =
     *.pyc,
     *.egg-info,
     .cache,
-    .eggs
+    .eggs,
+    .gitignore,
+    *.pot,
+    *.py[co],
+    venv,
+    .env,
 max-complexity = 10
 import-order-style = google
 application-import-names = trees-everywhere

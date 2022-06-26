@@ -68,3 +68,12 @@ build:
 
 test:
 	cd app/ && python manage.py test ;\
+
+doc:
+	@sphinx-build -E -W -c docs/source/ -b html docs/source/ docs/build/html
+
+lint:
+	flake8 --exit-zero
+
+cov:
+	cd app/ &&	coverage run manage.py test && coverage report -m && coverage html && coverage erase   
