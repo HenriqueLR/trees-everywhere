@@ -65,3 +65,6 @@ restart: remove
 
 build:
 	docker-compose up -d ;\
+
+test:
+	cd app/ && python manage.py test ;\
