@@ -1,5 +1,5 @@
-Trees-everywhere is a web application that objective to keep a record of planted trees, keeping information
-such as, who planted the tree, location and other information.
+The "Trees Everywhere" project objective to create a database of trees planted by
+volunteers around the world.
 
 ### Requirements
   

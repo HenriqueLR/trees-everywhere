@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block extra_scripts %}
+	<style type="text/css">
+		body{
+			background-color: rgb(95, 226, 123)!important;	
+		} 
+    .custom-row {
+        margin-top:23px;
+    }        
+    .backbody{
+        background-color: rgb(95, 226, 123)!important;	
+      }    
+	</style>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 backbody">     
+    <form action="." method="post">
+      <h1>Create Account</h1>
+      {% include 'accounts/register_messages.html' %}
+      {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_first_name" class="form-label">First Name</label>
+          <input required="" name="first_name" placeholder="first name" type="text" class="form-control" id="id_first_name"
+          value="{% if form_profile.first_name.value %}{{ form_profile.first_name.value }}{% endif %}"      
+          >
+        </div>
+        <div class="mb-3">
+          <label for="id_last_name" class="form-label">Last Name</label>
+          <input required="" name="last_name" placeholder="last name" type="text" class="form-control" id="id_last_name"
+          value="{% if form_profile.last_name.value %}{{ form_profile.last_name.value }}{% endif %}"     
+          >
+        </div> 
+        <div class="mb-3">
+          <label for="id_email" class="form-label">Email address</label>
+          <input placeholder="e-mail" name="email" type="email" class="form-control" id="id_email"
+          value="{% if form_user.email.value %}{{ form_user.email.value }}{% endif %}"     
+          >
+        </div>        
+        <div class="mb-3">
+          <label for="id_cpf" class="form-label">Cpf</label>
+          <input name="cpf" placeholder="cpf" type="text" class="form-control" id="id_cpf"
+          value="{% if form_account.cpf.value %}{{ form_account.cpf.value }}{% endif %}" 
+          >
+        </div>           
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input placeholder="password" name="password" type="password" class="form-control" id="id_password">
+        </div>
+        <div class="mb-3">
+          <label for="id_password_2" class="form-label">Password</label>
+          <input placeholder="repeat password" name="password_2" type="password" class="form-control" id="id_password_2">
+        </div>        
+          
+        <button type="submit" class="btn btn-success">create account</button>
+      </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% if form_profile %}
+	{% if form_profile.errors %}
+		<div class="alert alert-danger">
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			<strong>Error: </strong>
+			{% for field, error in form_profile.errors.items %}
+				{% if field != '__all__' %}{{ field }}{% endif %}
+				{{ error | striptags }}<br />
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endif %}
+
+{% if form_account %}
+	{% if form_account.errors %}
+		<div class="alert alert-danger">
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			<strong>Error: </strong>
+			{% for field, error in form_account.errors.items %}
+				{% if field != '__all__' %}{{ field }}{% endif %}
+				{{ error | striptags }}<br />
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endif %}
+
+{% if form_user %}
+	{% if form_user.errors %}
+		<div class="alert alert-danger">
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			<strong>Error: </strong>
+			{% for field, error in form_user.errors.items %}
+				{% if field != '__all__' %}{{ field }}{% endif %}
+				{{ error | striptags }}<br />
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endif %}
