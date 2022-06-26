@@ -56,7 +56,7 @@ such as, who planted the tree, location and other information.
 
 ### Run Tests
 
-    make tests
+    make test
     
     Name                                  Stmts   Miss  Cover   Missing
     -------------------------------------------------------------------
